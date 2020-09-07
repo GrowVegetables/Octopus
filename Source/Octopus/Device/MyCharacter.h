@@ -3,26 +3,17 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
-#include "SoundDeviceBase.generated.h"
+#include "GameFramework/Character.h"
+#include "MyCharacter.generated.h"
 
 UCLASS()
-class OCTOPUS_API ASoundDeviceBase : public APawn
+class OCTOPUS_API AMyCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
-	ASoundDeviceBase();
-
-	UPROPERTY(EditAnywhere)
-	int32 TestUproperty;
-
-	UPROPERTY(EditAnywhere)
-	UStaticMesh* StaticMesh;
-
-	UPROPERTY(EditAnywhere)
-	UMaterial* Material;
+	// Sets default values for this character's properties
+	AMyCharacter();
 
 protected:
 	// Called when the game starts or when spawned
@@ -34,5 +25,7 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	void MoveToTouchLocation(const ETouchIndex::Type FingerIndex, const FVector Location);
 
 };
